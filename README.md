@@ -1,5 +1,7 @@
 ## Running the app
 
+![Build status](https://travis-ci.org/RARomano/Punch.svg?branch=master)
+
 ### Dependencies
 - .NET core: https://www.microsoft.com/net/core?WT.mc_id=Blog_CENews_Announce_CEA
 - Node: https://nodejs.org/en/download/
