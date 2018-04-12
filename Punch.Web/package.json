@@ -1,6 +1,10 @@
 {
   "name": "Punch.Web",
   "private": true,
+  "scripts": {
+    "dev": "dotnet run",
+    "start": "npm run dev"
+  },
   "version": "0.0.0",
   "devDependencies": {
     "@types/webpack-env": "^1.13.0",
