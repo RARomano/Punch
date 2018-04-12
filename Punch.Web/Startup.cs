@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+
+using Punch.Data;
+using Punch.Services.Posts;
 
 namespace Punch.Web
 {
@@ -22,7 +26,12 @@ namespace Punch.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IPostRepository, PostRepository>();
+
             services.AddMvc();
+            
+            var connectionString = Configuration.GetConnectionString(typeof(Startup).Namespace);
+            services.AddDbContext<DataContext>(options => options.UseSqlite(connectionString, x => x.MigrationsAssembly(typeof(DataContext).Assembly.FullName)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
