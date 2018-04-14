@@ -38,6 +38,50 @@ namespace Punch.Data.Migrations
 
                     b.ToTable("Post");
                 });
+
+            modelBuilder.Entity("Punch.Domain.PostTag", b =>
+                {
+                    b.Property<int>("PostId");
+
+                    b.Property<int>("TagId");
+
+                    b.HasKey("PostId", "TagId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("PostTag");
+                });
+
+            modelBuilder.Entity("Punch.Domain.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Name");
+
+                    b.Property<DateTime>("RowCreationDate");
+
+                    b.Property<DateTime>("RowModificationDate");
+
+                    b.Property<Guid>("RowVersion");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tag");
+                });
+
+            modelBuilder.Entity("Punch.Domain.PostTag", b =>
+                {
+                    b.HasOne("Punch.Domain.Post", "Post")
+                        .WithMany("Tags")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Punch.Domain.Tag", "Tag")
+                        .WithMany("Posts")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
 #pragma warning restore 612, 618
         }
     }

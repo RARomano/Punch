@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Punch.Data;
 using Punch.Services.Posts;
+using Punch.Services.Tags;
 
 namespace Punch.Web
 {
@@ -27,6 +28,7 @@ namespace Punch.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
 
             services.AddMvc();
             

@@ -244,3 +244,5 @@ _Pvt_Extensions
 
 # SQLITE
 *.sqlite
+
+.DS_Store

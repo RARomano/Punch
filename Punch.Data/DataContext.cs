@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Punch.Domain;
-using System.Linq;
+using Punch.Data.Configurations;
 
 namespace Punch.Data
 {
@@ -15,20 +14,15 @@ namespace Punch.Data
         public DataContext() { }
 
         public DbSet<Post> Post { get; set; }
-
+        public DbSet<Tag> Tag { get; set; }
+        public DbSet<PostTag> PostTag { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Add the fluent API configurations
-            var typesToRegister = Assembly.GetAssembly(typeof(DataContext))
-                .GetTypes()
-                    .Where(type => type.Namespace != null && type.Namespace.Equals(typeof(DataContext).Namespace + ".Configurations"))
-                    .Where(type => type.BaseType.IsGenericType && type.BaseType.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>));
+            base.OnModelCreating(modelBuilder);
 
-            foreach (var type in typesToRegister)
-            {
-                dynamic config = Activator.CreateInstance(type);
-                modelBuilder.ApplyConfiguration(config);
-            }
+            modelBuilder.ApplyConfiguration(new PostConfiguration());                
+            modelBuilder.ApplyConfiguration(new TagConfiguration());                
+            modelBuilder.ApplyConfiguration(new PostTagConfiguration());                
         }
     }
 }

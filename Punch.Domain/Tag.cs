@@ -3,17 +3,16 @@ using System.Collections.Generic;
 
 namespace Punch.Domain
 {
-    public class Post
+    public class Tag
     {
         public int Id { get; set; }
-        public int Title { get; set; }
-        public int Body { get; set; }
+        public int Name { get; set; }
 
 
         public Guid RowVersion { get; set; }
         public DateTime RowCreationDate { get; set; }
         public DateTime RowModificationDate { get; set; }
 
-        public IEnumerable<PostTag> Tags { get; set; }
+        public IEnumerable<PostTag> Posts { get; set; }
     }
 }
