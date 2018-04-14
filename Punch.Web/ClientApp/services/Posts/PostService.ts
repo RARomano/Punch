@@ -1,4 +1,4 @@
-import BaseService from "../baseService";
+import BaseService from "../BaseService";
 import { Post } from "../../models/Posts/Post";
 
 class PostService extends BaseService<Post> {
