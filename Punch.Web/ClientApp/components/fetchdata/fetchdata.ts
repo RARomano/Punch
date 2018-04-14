@@ -1,22 +1,25 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-
-interface WeatherForecast {
-    dateFormatted: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
+import { Post } from '../../models/Posts/Post';
+import PostService from '../../services/Posts/PostService';
 
 @Component
 export default class FetchDataComponent extends Vue {
-    forecasts: WeatherForecast[] = [];
+  posts: Post[] = [];
 
-    mounted() {
-        fetch('api/SampleData/WeatherForecasts')
-            .then(response => response.json() as Promise<WeatherForecast[]>)
-            .then(data => {
-                this.forecasts = data;
-            });
-    }
+  mounted() {
+    this.loadData();
+  }
+
+  loadData() {
+    PostService.getAll().then(posts => this.posts = posts);
+
+  }
+
+  createPost() {
+    PostService.addNew(new Post({
+      title: 'abc',
+      body: 'def'
+    })).then(() => this.loadData() );
+  }
 }

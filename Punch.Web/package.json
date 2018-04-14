@@ -10,6 +10,8 @@
     "@types/webpack-env": "^1.13.0",
     "aspnet-webpack": "^2.0.3",
     "awesome-typescript-loader": "^3.0.0",
+    "axios": "^0.18.0",
+    "bluebird": "^3.5.1",
     "bootstrap": "^3.3.6",
     "css-loader": "^0.25.0",
     "event-source-polyfill": "^0.0.7",
