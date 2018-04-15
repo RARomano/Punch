@@ -13,20 +13,24 @@
             <div class="clearfix"></div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <template v-for="route in routes">
+                        <li>
+                            <router-link :to="route.path" :exact="true" v-if="shouldShow(route)">
+                                <span class="glyphicon" :class="route.meta.class"></span> {{$t(route.name)}}
+                            </router-link>
+                        </li>
+                        <template v-if="route.children && route.children.length">
+                            <li v-if="shouldShow(child)" v-for="child in route.children">
+                                <router-link :to="child.path" :exact="true">
+                                    <span class="glyphicon" :class="child.meta.class"></span> {{$t(child.name)}}
+                                </router-link>
+                            </li>
+                        </template>
+                    </template>
                     <li>
-                        <router-link to="/" :exact="true">
-                            <span class="glyphicon glyphicon-home"></span> Home
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="/counter">
-                            <span class="glyphicon glyphicon-education"></span> Counter
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="/fetchdata">
-                            <span class="glyphicon glyphicon-th-list"></span> Fetch data
-                        </router-link>
+                        <a href="" @click.prevent="logoff">
+                            <span class="glyphicon glyphicon-log-out"></span> {{$t('MENU.LOGOUT')}}
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -35,3 +39,4 @@
 </template>
 
 <style src="./navmenu.css" />
+<script src="./navmenu.ts"></script>

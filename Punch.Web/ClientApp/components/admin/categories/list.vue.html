@@ -1,0 +1,14 @@
+<template>
+  <list :name="'CATEGORIES'" :service-name="'categories'" :new-url="'/admin/categories/new'" :edit-url="'/admin/categories/edit/'" :translationSection="'CATEGORIES.LIST'">
+    <tr slot="header">
+        <th>{{$t('CATEGORIES.FIELDS.ID')}}</th>
+        <th>{{$t('CATEGORIES.FIELDS.TITLE')}}</th>
+      </tr>
+
+    <template slot="rows" slot-scope="props">
+        <td>{{ props.data.id }}</td>
+        <td>{{ props.data.title }}</td>
+      </template>
+  </list>
+</template>
+<script src="./list.ts"></script>

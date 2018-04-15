@@ -11,8 +11,8 @@ using System;
 namespace Punch.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180414172933_FixPostData")]
-    partial class FixPostData
+    [Migration("20180415133659_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,12 +20,26 @@ namespace Punch.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125");
 
+            modelBuilder.Entity("Punch.Domain.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("Punch.Domain.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Body");
+
+                    b.Property<int?>("CategoryId");
 
                     b.Property<DateTime>("RowCreationDate");
 
@@ -36,6 +50,8 @@ namespace Punch.Data.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Post");
                 });
@@ -69,6 +85,13 @@ namespace Punch.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tag");
+                });
+
+            modelBuilder.Entity("Punch.Domain.Post", b =>
+                {
+                    b.HasOne("Punch.Domain.Category", "Category")
+                        .WithMany("Posts")
+                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("Punch.Domain.PostTag", b =>

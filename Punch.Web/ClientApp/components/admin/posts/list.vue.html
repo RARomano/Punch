@@ -1,0 +1,16 @@
+<template>
+  <list :name="'POSTS'" :service-name="'posts'" :new-url="'/admin/posts/new'" :edit-url="'/admin/posts/edit/'" :translationSection="'POSTS.LIST'">
+    <tr slot="header">
+        <th>{{$t('POSTS.FIELDS.ID')}}</th>
+        <th>{{$t('POSTS.FIELDS.TITLE')}}</th>
+        <th>{{$t('POSTS.FIELDS.BODY')}}</th>
+      </tr>
+
+    <template slot="rows" slot-scope="props">
+        <td>{{ props.data.id }}</td>
+        <td>{{ props.data.title }}</td>
+        <td>{{ props.data.body }}</td>
+      </template>
+  </list>
+</template>
+<script src="./list.ts"></script>

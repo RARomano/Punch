@@ -11,6 +11,7 @@ module.exports = (env) => {
         resolve: { extensions: [ '.js' ] },
         entry: {
             vendor: [
+                'vue-i18n',
                 'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
                 'event-source-polyfill',

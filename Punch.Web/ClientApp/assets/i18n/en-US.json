@@ -1,0 +1,49 @@
+{
+  "MENU": {
+    "HOME": "Home",
+    "ADMIN": {
+      "POSTS": "Posts",
+      "CATEGORIES": "Categories",
+      "TAGS": "Tags"
+    },
+    "LOGOUT": "Logout"
+  },
+  "POSTS": {
+    "LIST": {
+      "POSTS": "All Posts",
+      "BUTTONS": {
+        "NEW": "New Post"
+      }
+    },
+    "FIELDS": {
+      "ID": "ID",
+      "TITLE": "Title",
+      "BODY": "Body"
+    }
+    
+  },
+  "CATEGORIES": {
+    "LIST": {
+      "CATEGORIES": "All Categories",
+      "BUTTONS": {
+        "NEW": "New Category"
+      }
+    },
+    "FIELDS": {
+      "ID": "ID",
+      "TITLE": "Title"
+    }
+  },
+  "TAGS": {
+    "LIST": {
+      "TAGS": "All Tags",
+      "BUTTONS": {
+        "NEW": "New Tag"
+      }
+    },
+    "FIELDS": {
+      "ID": "ID",
+      "NAME": "Name"
+    }
+  }
+}

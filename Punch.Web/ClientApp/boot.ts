@@ -1,17 +1,15 @@
 import './css/site.css';
 import 'bootstrap';
 import Vue from 'vue';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
 
-const routes = [
-    { path: '/', component: require('./components/home/home.vue.html') },
-    { path: '/counter', component: require('./components/counter/counter.vue.html') },
-    { path: '/fetchdata', component: require('./components/fetchdata/fetchdata.vue.html') }
-];
+import RouterConfig from './routerConfig';
+import LanguageService from './services/Language/LanguageService';
+
+const i18n = LanguageService.init();
 
 new Vue({
     el: '#app-root',
-    router: new VueRouter({ mode: 'history', routes: routes }),
+    router: new RouterConfig().getRouter(),
+    i18n,
     render: h => h(require('./components/app/app.vue.html'))
 });

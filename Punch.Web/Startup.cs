@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Punch.Data;
 using Punch.Services.Posts;
 using Punch.Services.Tags;
+using Punch.Services.Categories;
 
 namespace Punch.Web
 {
@@ -29,6 +30,7 @@ namespace Punch.Web
         {
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ITagRepository, TagRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.AddMvc();
             

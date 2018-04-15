@@ -1,0 +1,14 @@
+<template>
+  <list :name="'TAGS'" :service-name="'tags'" :new-url="'/admin/tags/new'" :edit-url="'/admin/tags/edit/'" :translationSection="'TAGS.LIST'">
+    <tr slot="header">
+        <th>{{$t('TAGS.FIELDS.ID')}}</th>
+        <th>{{$t('TAGS.FIELDS.NAME')}}</th>
+      </tr>
+
+    <template slot="rows" slot-scope="props">
+        <td>{{ props.data.id }}</td>
+        <td>{{ props.data.name }}</td>
+      </template>
+  </list>
+</template>
+<script src="./list.ts"></script>

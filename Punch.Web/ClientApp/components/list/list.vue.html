@@ -1,0 +1,24 @@
+<template>
+    <div>
+      <h1> {{$t(translationSection + '.' + name)}}</h1>
+  
+      <div v-if="newUrl">
+        <router-link :to="newUrl" :exact="true">
+          <span class="glyphicon glyphicon-plus"></span> {{$t(translationSection + '.BUTTONS.NEW')}}
+        </router-link>
+      </div>
+  
+      <table class="table">
+        <thead>
+          <slot name="header">
+          </slot>
+        </thead>
+        <tbody>
+          <tr v-for="item in items" class="selectable-row" :data-id="item.id" @click="openItem">
+            <slot name="rows" :data="item"></slot>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </template>
+  <script src="./list.ts"></script>
