@@ -15,5 +15,6 @@ namespace Punch.Domain
         public DateTime RowModificationDate { get; set; }
 
         public IEnumerable<PostTag> Tags { get; set; }
+        public Category Category { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace Punch.Data
 
         public DbSet<Post> Post { get; set; }
         public DbSet<Tag> Tag { get; set; }
+        public DbSet<Category> Category { get; set; }
         public DbSet<PostTag> PostTag { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,7 +23,8 @@ namespace Punch.Data
 
             modelBuilder.ApplyConfiguration(new PostConfiguration());                
             modelBuilder.ApplyConfiguration(new TagConfiguration());                
-            modelBuilder.ApplyConfiguration(new PostTagConfiguration());                
+            modelBuilder.ApplyConfiguration(new PostTagConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());                    
         }
     }
 }
